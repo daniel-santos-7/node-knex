@@ -3,3 +3,4 @@ const kenx = require('knex');
 
 const db = kenx(knexfile.development);
 
+module.exports = db;
