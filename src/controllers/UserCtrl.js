@@ -4,7 +4,7 @@ module.exports = {
 
     async index(req,res) {
 
-        const results = await db('users');
+        const results = await db('users').where('deleted_at',null);
 
         return res.json(results);
 
@@ -56,7 +56,7 @@ module.exports = {
             
             const { id } = req.params;
 
-            await db('users').where({ id }).delete();
+            await db('users').where({ id }).update('deleted_at', new Date());
 
             return res.status(204).send();
         
